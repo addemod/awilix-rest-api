@@ -5,6 +5,7 @@ dotenv.config()
 import express = require("express")
 import { loadControllers, scopePerRequest } from 'awilix-express'
 import { ExampleService } from "./services"
+import * as fs from "fs"
 const { asClass, asValue, createContainer} = require('awilix')
 export const app = express()
 
@@ -18,4 +19,7 @@ container.register({
 
 // Setup awilix express
 app.use(scopePerRequest(container))
-app.use(loadControllers("api/**/*.route.ts", { cwd: __dirname }))
+for(let folderName of fs.readdirSync(__dirname + "/api")) {
+    app.use(`/${folderName}`, loadControllers(`api/${folderName}/*.route.ts`, { cwd: __dirname }))
+}
+app.use(loadControllers(`api/*.route.ts`, { cwd: __dirname }))
