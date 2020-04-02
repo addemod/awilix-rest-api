@@ -1,7 +1,7 @@
 # awilix-rest-api
 A personal base structure to create a REST API in node.js using awilix, sequelize and express in TypeScript.
 ## Routes
-Routes are defined in the `/src//api` folder. Any file ending with `.route.ts` will be treated as an awilix-express route class.
+Routes are defined in the `/src/api` folder. Any file ending with `.route.ts` will be treated as an awilix-express route class.
 
 Preferrably structure your routes in some kind of versioning structure, such as
 
