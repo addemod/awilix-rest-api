@@ -4,6 +4,7 @@ dotenv.config()
 
 import express = require("express")
 import { loadControllers, scopePerRequest } from 'awilix-express'
+import { ExampleService } from "./services"
 const { asClass, asValue, createContainer} = require('awilix')
 export const app = express()
 
@@ -12,6 +13,7 @@ export const app = express()
 const container = createContainer()
 container.register({
     // Register classes here
+    exampleService: asClass(ExampleService)
 })
 
 // Setup awilix express
